@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const lesson1_controler = require('./controlers/lesson1');
-const enviroment = require('custom-env').env('info');
+require('custom-env').env('info');
 const db_conn = require('./models/db_connection');
 
 app.get('/', lesson1_controler.meRoute);

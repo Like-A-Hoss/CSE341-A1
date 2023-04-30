@@ -1,6 +1,6 @@
-require ('custom-env').env('../info.env');
+require ('custom-env').env('info');
 const { MongoClient, ServerApiVersion } = require('mongodb');
-uri = "mongodb+srv://"+ env.DB_USER + ":" + env.DB_PASSWORD + "@cluster0.qfwv1cj.mongodb.net/?retryWrites=true&w=majority"
+uri = "mongodb+srv://"+ process.env.DB_USER + ":" + process.env.DB_PASSWORD + "@cluster0.qfwv1cj.mongodb.net/?retryWrites=true&w=majority"
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
   serverApi: {
@@ -20,4 +20,4 @@ async function run() {
     // Ensures that the client will close when you finish/error
     await client.close();
   }
-}
+};
