@@ -1,0 +1,32 @@
+Contacts API
+===========
+
+This API provides CRUD operations for a collection of contacts stored in a MongoDB database.
+
+Base URL
+--------
+
+The base URL for the API is `https://cse341-spring23-3b0l.onrender.com/contacts`.
+
+Create Contact
+--------------
+
+To create a new contact, send a POST request to https://cse341-spring23-3b0l.onrender.com/contacts with the following JSON setup:
+
+```json
+{
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "johndoe@example.com",
+    "favorite color": "Red",
+    "Birthday": 2020-01-31
+}
+The API will respond with the new contact object, including its unique ID:
+{
+    "_id": "601f20e1b95c4277c9826e0d",
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "johndoe@example.com",
+    "favorite color": "Red",
+    "Birthday": 2020-01-31
+}
