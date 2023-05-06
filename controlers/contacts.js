@@ -1,4 +1,6 @@
 const db_client = require('../models/db_connection');
+const url = require('url');
+const querystring = require('querystring');
 
 //const getData  = client.getDb().db().collection('contacts');
 
@@ -13,11 +15,14 @@ const getData = async (req, res)=>
 
 const getSearch = async (req, res)=>
 {
-  const query = req.query;
-  const result = await db_client.getDb().db().collection('contacts').find(query);
-result.toArray().then((data) => {
-res.setHeader('Content-Type', 'application/json');
-res.status(200).json(data);
+  const query = url.parse(req.url).query;
+  console.log(query);
+  const searchTerm = querystring.parse(query).firstName;
+  console.log(searchTerm);
+  const result = await db_client.getDb().db().collection('contacts').find({firstName: searchTerm});
+  result.toArray().then((data) => {
+  res.setHeader('Content-Type', 'application/json');
+  res.status(200).json(data);
 });
 };
 
