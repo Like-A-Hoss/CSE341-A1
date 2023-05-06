@@ -6,14 +6,14 @@ This API provides CRUD operations for a collection of contacts stored in a Mongo
 Base URL
 --------
 
-The base URL for the API is `https://cse341-spring23-3b0l.onrender.com/contacts`.
+The base URL for the API is `https://cse341-spring23-3b0l.onrender.com`.
 
 Create Contact
 --------------
 
 To create a new contact, send a POST request to https://cse341-spring23-3b0l.onrender.com/contacts with the following JSON setup:
 
-```json
+
 {
     "firstName": "John",
     "lastName": "Doe",
@@ -29,4 +29,20 @@ The API will respond with the new contact object, including its unique ID:
     "email": "johndoe@example.com",
     "favorite color": "Red",
     "Birthday": 2020-01-31
+}
+
+Get Contacts
+To retrieve all contacts, send a GET request to the URL https://cse341-spring23-3b0l.onrender.com/contacts. The API will respond with an array of contact objects:
+
+Get Contact by First Name
+To retrieve a single contact by its ID, send a GET request to the URL https://cse341-spring23-3b0l.onrender.com/search?firstName= with the contact first name appended to the URL:
+https://cse341-spring23-3b0l.onrender.com/search?firstName=Nick
+which returns the following.
+{
+    "_id":"6455858d3c894d5b5f87a105",
+    "firstName":"Nick",
+    "lastName":"Adams",
+    "email":"nicholas.adams@regus.com",
+    "favoriteColor":"Blue",
+    "birthday":"1990-09-03T05:00:00.000Z"
 }
