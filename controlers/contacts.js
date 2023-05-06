@@ -10,4 +10,15 @@ const getData = async (req, res)=>
   res.status(200).json(data);
 });
 };
-module.exports={getData};
+
+const getSearch = async (req, res)=>
+{
+  const query = req.query;
+  const result = await db_client.getDb().db().collection('contacts').find(query);
+result.toArray().then((data) => {
+res.setHeader('Content-Type', 'application/json');
+res.status(200).json(data);
+});
+};
+
+module.exports = {getData, getSearch};

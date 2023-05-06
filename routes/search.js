@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const path = require('../controlers/contacts')
 
-router.use('/contacts', require('./contacts'));
-router.use('/search', require('./search'));
+router.get('/', path.getSearch);
 
 module.exports = router;
