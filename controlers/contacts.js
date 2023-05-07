@@ -4,10 +4,10 @@ const querystring = require('querystring');
 const bodyParser = require('body-parser');
 const express = require('express');
 const { ObjectId } = require('mongodb');
-const { timeStamp } = require('console');
 const app = express();
 const objectId = require('mongodb').ObjectId;
 const mongodb = require('mongodb');
+const router = express.Router();
 
 
 // gets all contacts
@@ -56,10 +56,12 @@ const postNew = async (req,res) =>
 };
 
 const update = async (res,req) =>{
-  const id = new objectId(req.params.id);
+  
   console.log('new attempt');
   console.log(req);
   console.log('Atempting to read req.body: ' +req.body);
+  console.log('Atempting to read req.params: ' +req.params);
+  const id = new objectId(req.params.id);
   const contact = {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
@@ -72,7 +74,7 @@ const update = async (res,req) =>{
     .getDb()
     .db()
     .collection('contacts')
-    .replaceOne({ _id: id }, contact);
+    .updateOne({ _id: id }, contact);
   console.log(response);
   if (response.modifiedCount > 0) {
     res.status(204).send();
