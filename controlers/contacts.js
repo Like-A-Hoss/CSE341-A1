@@ -66,7 +66,7 @@ const update = async (req, res) =>{
     birthday: req.body.birthday
   };
   console.log(contact);
-  const response = await db_client.getDb().db().collection('contacts').updateOne({ _id: id }, contact);
+  const response = await db_client.getDb().db().collection('contacts').updateOne({ _id: id }, {$set:{contact}}, {upsert: true});
   console.log(response);
   if (response.modifiedCount > 0) {
     res.status(204).send();
