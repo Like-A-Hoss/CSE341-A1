@@ -104,13 +104,12 @@ const remove = async (req,res) =>
 {
   const contactID = new objectId(req.params.id);
   console.log(contactID);
-   
   const response = await db_client.getDb().db().collection('contacts').deleteOne({ _id: contactID }, true); 
     console.log(response);
     if (response.deletedCount > 0) {
       res.status(204).send;
     }else {
-      res.status(500).json(respose.error || 'Some error occured while attempting to delete contact.');
+      res.status(500).json(respose.error || 'An unknown error occured while attempting to delete contact.');
     }
 };
 
