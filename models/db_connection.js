@@ -27,8 +27,16 @@ const getDb = () => {
   return _db;
 };
 
+const closeDb  = callback => {
+  if (!_db) {
+    throw Error('Db not initialized');
+  }
+  db.close();
+};
+
 module.exports = {
   initDb,
-  getDb
+  getDb,
+  closeDb
 };
 
