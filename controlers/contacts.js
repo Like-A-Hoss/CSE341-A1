@@ -47,12 +47,8 @@ const postNew = async (req,res) =>
     favoriteColor: favoriteColor,
     birthday: birthday
   };
-  db_client.getDb().db().collection('contacts').insertOne(contact, function(err, result){
-    console.log('contact added to database');
-    if (err) throw err;
-    console.log('error passed');
+  db_client.getDb().db().collection('contacts').insertOne(contact, true)
     res.send({id: result.insertedId});
-  });
 };
 
 const update = async (res,req) =>{
