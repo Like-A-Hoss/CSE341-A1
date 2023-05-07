@@ -19,7 +19,7 @@ const getData = async (req, res)=>
 });
 };
 
-const getSearch = async (req, res)=>
+const getSearch = async (req,res)=>
 {
   const query = url.parse(req.url).query;
   console.log(query);
@@ -51,12 +51,12 @@ const postNew = async (req,res) =>
     res.send({id: result.insertedId});
 };
 
-const update = async (res,req) =>{
+const update = async (req, res) =>{
   
   console.log('new attempt');
   console.log(req);
-  console.log('Atempting to read req.body: ' +req.body);
-  console.log('Atempting to read req.params: ' +req.params);
+  console.log('Atempting to read req.body: ' + req.body);
+  console.log('Atempting to read req.params: ' + req.params);
   const id = new objectId(req.params.id);
   const contact = {
     firstName: req.body.firstName,
