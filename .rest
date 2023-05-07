@@ -31,12 +31,12 @@ The API will respond with the new contact object, including its unique ID:
     "Birthday": 2020-01-31
 }
 
-Get Contacts
+Get https://cse341-spring23-3b0l.onrender.com/contacts HTTP/1.1
 To retrieve all contacts, send a GET request to the URL https://cse341-spring23-3b0l.onrender.com/contacts. The API will respond with an array of contact objects:
 
-Get Contact by First Name
+To get Contact by First Name
 To retrieve a single contact by its ID, send a GET request to the URL https://cse341-spring23-3b0l.onrender.com/search?firstName= with the contact first name appended to the URL:
-https://cse341-spring23-3b0l.onrender.com/search?firstName=Nick
+Get https://cse341-spring23-3b0l.onrender.com/search?firstName=Nick HTTP/1.1
 which returns the following.
 {
     "_id":"6455858d3c894d5b5f87a105",
@@ -46,3 +46,19 @@ which returns the following.
     "favoriteColor":"Blue",
     "birthday":"1990-09-03T05:00:00.000Z"
 }
+
+### POST Contact
+POST https://cse341-spring23-3b0l.onrender.com/contacts/?firstName=Khan&lastName=Souphanousiphone&email=kahn.s@kingofthehill.tv&favoriteColor=Green&birthday=1957-09-15 HTTP/1.1
+
+### PUT Contact update
+PUT https://cse341-spring23-3b0l.onrender.com/contacts/6456d35fc50761486c267e30 HTTP/1.1
+Content-Type: application/json
+{
+  "firstName":"Peggy",
+  "lastName":"Hill",
+  "email":"p.hill@kingofthehill.tv",
+  "favoriteColor":"Pink",
+  "birthday":"1954-02-14"
+}
+
+DELETE https://cse341-spring23-3b0l.onrender.com/contacts/645585f43c894d5b5f87a108
