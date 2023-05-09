@@ -47,7 +47,7 @@ const postNew = async (req,res) =>
     favoriteColor: favoriteColor,
     birthday: birthday
   };
-  db_client.getDb().db().collection('contacts').insertOne(contact, true)
+  const result = await db_client.getDb().db().collection('contacts').insertOne(contact, true)
     res.send({id: result.insertedId});
 };
 
