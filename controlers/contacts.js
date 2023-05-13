@@ -21,11 +21,9 @@ const getData = async (req, res)=>
 
 const getSearch = async (req,res)=>
 {
-  const query = url.parse(req.url).query;
+  const query = new objectId(req.params.id);;
   console.log(query);
-  const searchTerm = querystring.parse(query).firstName;
-  console.log(searchTerm);
-  const result = await db_client.getDb().db().collection('contacts').find({firstName: searchTerm});
+  const result = await db_client.getDb().db().collection('contacts').find({id: query});
   result.toArray().then((data) => {
   res.setHeader('Content-Type', 'application/json');
   res.status(200).json(data);
@@ -34,19 +32,14 @@ const getSearch = async (req,res)=>
 
 const postNew = async (req,res) =>
 {
-  const raw_contact = url.parse(req.url).query;
-  const firstName = querystring.parse(raw_contact).firstName;
-  const lastName = querystring.parse(raw_contact).lastName;
-  const email = querystring.parse(raw_contact).email;
-  const favoriteColor = querystring.parse(raw_contact).favoriteColor;
-  const birthday = querystring.parse(raw_contact).birthday;
   const contact = {
-    firstName: firstName,
-    lastName: lastName,
-    email: email,
-    favoriteColor: favoriteColor,
-    birthday: birthday
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    favoriteColor: req.body.favoriteColor,
+    birthday: req.body.birthday
   };
+  
   const result = await db_client.getDb().db().collection('contacts').insertOne(contact, true)
     res.send({id: result.insertedId});
 };
