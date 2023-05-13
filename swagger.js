@@ -9,9 +9,9 @@ const doc = {
     title: "Your API Title",
     description: "API documentation for your API"
   },
-  host:"https://cse341-spring23-3b0l.onrender.com",// Your API host URL
+  host:"cse341-spring23-3b0l.onrender.com",// API host URL
   basePath: "/",
-  schemes: ['http'],
+  schemes: ['https'],
   consumes: ['application/json'],
   produces: ['application/json'],
   tags: [ // Your tags definition
@@ -28,5 +28,5 @@ const doc = {
 }
 
 swaggerAutogen(outputFile, endpointsFiles, doc).then(() => {
-  require('./routes/index') // Your Express.js or Koa.js app file path
+  require('./routes/index') 
 })
