@@ -9,11 +9,7 @@ const doc = {
     title: "Your API Title",
     description: "API documentation for your API"
   },
-  host: [
-    {
-        localUrl: "localhost:3000",
-        productionUrl: "https://cse341-spring23-3b0l.onrender.com"
-    }],// Your API host URL
+  host:"https://cse341-spring23-3b0l.onrender.com",// Your API host URL
   basePath: "/",
   schemes: ['http'],
   consumes: ['application/json'],
