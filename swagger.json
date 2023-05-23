@@ -34,9 +34,6 @@
     "/": {
       "get": {
         "description": "",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [],
         "responses": {
           "200": {
@@ -266,20 +263,6 @@
           },
           "500": {
             "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/search/": {
-      "get": {
-        "description": "",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "OK"
           }
         }
       }
